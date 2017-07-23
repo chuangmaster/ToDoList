@@ -141,11 +141,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ToDoListController.cs" />
+    <Compile Include="Controllers\Reposertory\ToDoLIstDLL.cs" />
+    <Compile Include="Controllers\Service\ToDoListBLL.cs" />
+    <Compile Include="Controllers\View\HomeController.cs" />
+    <Compile Include="Controllers\View\ToDoListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entity\ListContentEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -191,9 +194,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ToDoList\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
