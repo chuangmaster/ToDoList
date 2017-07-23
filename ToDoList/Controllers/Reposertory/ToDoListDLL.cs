@@ -26,7 +26,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
             string strSql = "SELECT Top 1 *  FROM tb_ListContent WITH(NO LOCK) WHERE fld_ID=@fld_ID ";
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = WebConfigurationManager.ConnectionStrings.ToString();
+                conn.ConnectionString = GetConnectString();
                 conn.Open();
                 try
                 {
@@ -59,7 +59,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
             string strSql = "SELECT * FROM tb_ListContent WITH(NO LOCK)";
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = WebConfigurationManager.ConnectionStrings.ToString();
+                conn.ConnectionString = GetConnectString();
                 conn.Open();
                 try
                 {
@@ -94,7 +94,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
             string strSql = "INSERT INTO tb_ListContent (fld_Content) VALUES(@fld_Content)";
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = WebConfigurationManager.ConnectionStrings.ToString();
+                conn.ConnectionString = GetConnectString();
                 conn.Open();
                 try
                 {
@@ -126,7 +126,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
             string strSql = "DELETE tb_ListContent WHERE fld_ID=@fld_ID ";
             using (SqlConnection conn = new SqlConnection())
             {
-                conn.ConnectionString = WebConfigurationManager.ConnectionStrings.ToString();
+                conn.ConnectionString = GetConnectString();
                 conn.Open();
                 try
                 {
@@ -146,6 +146,11 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                 }
             }
             return isSuccess;
+        }
+
+        private string GetConnectString()
+        {
+            return WebConfigurationManager.ConnectionStrings["loaclDB"].ToString(); 
         }
     }
 }
