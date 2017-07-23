@@ -141,14 +141,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Reposertory\ToDoLIstDLL.cs" />
+    <Compile Include="Controllers\Reposertory\ToDoListDLL.cs" />
     <Compile Include="Controllers\Service\ToDoListBLL.cs" />
     <Compile Include="Controllers\View\HomeController.cs" />
     <Compile Include="Controllers\View\ToDoListController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Entity\ListContentEntity.cs" />
+    <Compile Include="Models\Entity\ContentEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
