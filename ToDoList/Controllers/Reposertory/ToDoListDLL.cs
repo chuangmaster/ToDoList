@@ -150,7 +150,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
 
         private string GetConnectString()
         {
-            return WebConfigurationManager.ConnectionStrings["loaclDB"].ToString(); 
+            return WebConfigurationManager.ConnectionStrings["connectString"].ConnectionString; 
         }
     }
 }
