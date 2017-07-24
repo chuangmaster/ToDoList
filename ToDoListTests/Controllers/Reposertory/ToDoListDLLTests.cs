@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Web.Configuration;
 using System.Web.Hosting;
-
+using ToDoListLibrary.Entity.ToDoList;
 
 namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
 {
@@ -19,9 +19,31 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
         public void InsertContentTest()
         {
             ToDoListDLL todoDll = new ToDoListDLL();
-            //var connectStr = ConfigurationManager.ConnectionStrings["localDB"].ToString();
-            todoDll.InsertContent("def");
-            
+            todoDll.InsertContent("代辦1");
+
+        }
+
+        [TestMethod()]
+        public void ReadAllContentEntityTest()
+        {
+            ToDoListDLL todoDll = new ToDoListDLL();
+            List<ContentEntity> list = todoDll.ReadAllContentEntity();
+
+        }
+
+        [TestMethod()]
+        public void ReadEntityTest()
+        {
+            ToDoListDLL todoDll = new ToDoListDLL();
+            ContentEntity entity = todoDll.ReadEntity("20166498");
+           
+        }
+
+        [TestMethod()]
+        public void DeleteContentTest()
+        {
+            ToDoListDLL todoDll = new ToDoListDLL();
+            todoDll.DeleteContent("40574714");
         }
     }
 }

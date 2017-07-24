@@ -23,7 +23,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
         public ContentEntity ReadEntity(string fld_ID)
         {
             ContentEntity entity = null;
-            string strSql = "SELECT Top 1 *  FROM tb_ListContent WITH(NO LOCK) WHERE fld_ID=@fld_ID ";
+            string strSql = "SELECT Top 1 *  FROM tb_ListContent WHERE fld_ID=@fld_ID ";
             using (SqlConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = GetConnectString();
@@ -37,14 +37,15 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                     SqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
+                        entity = new ContentEntity();
                         entity.fld_ID = dr["fld_ID"].ToString();
                         entity.fld_Content = dr["fld_Content"].ToString();
-                        entity.fld_CreateDate = DateTime.Parse(dr["fld_ID"].ToString());
+                        entity.fld_CreateDate = DateTime.Parse(dr["fld_CreateDate"].ToString());
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    // handle Exception
+                    throw e;
                 }
             }
             return entity;
@@ -56,7 +57,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
         public List<ContentEntity> ReadAllContentEntity()
         {
             List<ContentEntity> listContentEntity = new List<ContentEntity>();
-            string strSql = "SELECT * FROM tb_ListContent WITH(NO LOCK)";
+            string strSql = "SELECT * FROM tb_ListContent";
             using (SqlConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = GetConnectString();
@@ -71,13 +72,13 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                         ContentEntity entity = new ContentEntity();
                         entity.fld_ID = dr["fld_ID"].ToString();
                         entity.fld_Content = dr["fld_Content"].ToString();
-                        entity.fld_CreateDate = DateTime.Parse(dr["fld_ID"].ToString());
+                        entity.fld_CreateDate = DateTime.Parse(dr["fld_CreateDate"].ToString());
                         listContentEntity.Add(entity);
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    // handle Exception
+                    throw e;
                 }
             }
             return listContentEntity;
@@ -140,13 +141,13 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                     cmd.Parameters.Add(new SqlParameter("@fld_ID", Convert.ToInt32(fld_ID)));
 
                     if (cmd.ExecuteNonQuery() > 0)
-        {
+                    {
                         isSuccess = true;
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    // handle Exception
+                    throw e;
                 }
             }
             return isSuccess;

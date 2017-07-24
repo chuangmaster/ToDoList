@@ -2,33 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ToDoListLibrary.Controllers.Reposertory.ToDoList;
 using ToDoListLibrary.Entity.ToDoList;
-<<<<<<< HEAD
-=======
-
->>>>>>> 597f6ae9ad3d2dd03e897894f97a8a722f3428a0
 namespace ToDoListLibrary.Controllers.Service.ToDoList
 {
     public class ToDoListBLL
     {
+
         public List<ContentEntity> GetListContentEntity()
         {
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> 597f6ae9ad3d2dd03e897894f97a8a722f3428a0
-            return new List<ContentEntity>();
+            ToDoListDLL toDoListDLL = new ToDoListDLL();
+            List<ContentEntity> entity = toDoListDLL.ReadAllContentEntity();
+            return entity;
         }
 
-        public bool AddContent()
+        public bool AddContent(string fld_content)
         {
-            return false;
+            ToDoListDLL toDoListDLL = new ToDoListDLL();
+            bool isSuccess = toDoListDLL.InsertContent(fld_content);
+            return isSuccess;
         }
 
         public bool RemoveContent(string fld_ID)
         {
-            return false;
+            ToDoListDLL toDoListDLL = new ToDoListDLL();
+            bool isSuccess = toDoListDLL.DeleteContent(fld_ID);
+            return isSuccess;
         }
     }
 }
