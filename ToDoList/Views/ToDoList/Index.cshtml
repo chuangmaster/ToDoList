@@ -1,11 +1,24 @@
-﻿@using System.Configuration;
+﻿@using ToDoListLibrary.Entity.ToDoList;
+@model  ToDoList.Models.ToDoListModel
 @{
-    
-    ViewBag.Title = "Index";
+    ViewBag.Title = "To Do List";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    string ss = ConfigurationManager.ConnectionStrings["connectString"].ConnectionString;
-    
+
 }
 
-<h2>Index</h2>
-@ss
+
+<div id="myDIV" class="header">
+    <h2>To Do List</h2>
+    <input type="text" id="myInput" placeholder="Title...">
+    <span onclick="newElement()" class="addBtn">Add</span>
+</div>
+
+<ul id="myUL">
+    @{
+        foreach (ContentEntity entity in Model.entityList)
+        {
+            <li>@entity.fld_Content</li>
+        }
+    }
+    
+</ul>
