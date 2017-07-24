@@ -7,6 +7,6 @@ namespace ToDoList.Models
 {
     public class ToDoListModel
     {
-        List<ContentEntity> entityList = new List<ContentEntity>();
+        public List<ContentEntity> entityList = new List<ContentEntity>();
     }
 }
