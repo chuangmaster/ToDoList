@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Web.Configuration;
 using System.Web.Hosting;
 
+
 namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
 {
     [TestClass()]
@@ -18,7 +19,6 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
         public void InsertContentTest()
         {
             ToDoListDLL todoDll = new ToDoListDLL();
-
             //var connectStr = ConfigurationManager.ConnectionStrings["localDB"].ToString();
             todoDll.InsertContent("def");
             

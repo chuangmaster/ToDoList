@@ -127,6 +127,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
             bool isSuccess = false;
             List<ContentEntity> listContentEntity = new List<ContentEntity>();
             string strSql = "DELETE tb_ListContent WHERE fld_ID=@fld_ID ";
+
             using (SqlConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = GetConnectString();
@@ -139,7 +140,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                     cmd.Parameters.Add(new SqlParameter("@fld_ID", Convert.ToInt32(fld_ID)));
 
                     if (cmd.ExecuteNonQuery() > 0)
-                    {
+        {
                         isSuccess = true;
                     }
                 }
@@ -154,6 +155,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
         private string GetConnectString()
         {
             return WebConfigurationManager.ConnectionStrings["localDB"].ToString();
+
         }
     }
 }

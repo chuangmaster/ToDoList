@@ -1,8 +1,11 @@
-﻿
+﻿@using System.Configuration;
 @{
+    
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string ss = ConfigurationManager.ConnectionStrings["connectString"].ConnectionString;
+    
 }
 
 <h2>Index</h2>
-
+@ss
