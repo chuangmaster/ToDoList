@@ -8,7 +8,6 @@ namespace ToDoListLibrary.Controllers.Service.ToDoList
 {
     public class ToDoListBLL
     {
-
         public List<ContentEntity> GetListContentEntity()
         {
             ToDoListDLL toDoListDLL = new ToDoListDLL();
