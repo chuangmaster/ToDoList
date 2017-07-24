@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Web.Configuration;
+using System.Web.Hosting;
 
 namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
 {
@@ -15,8 +18,10 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
         public void InsertContentTest()
         {
             ToDoListDLL todoDll = new ToDoListDLL();
-            todoDll.InsertContent("abc");
-            //Assert.Fail();
+
+            //var connectStr = ConfigurationManager.ConnectionStrings["localDB"].ToString();
+            todoDll.InsertContent("def");
+            
         }
     }
 }

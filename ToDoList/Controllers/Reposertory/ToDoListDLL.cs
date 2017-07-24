@@ -91,7 +91,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
         {
             bool isSuccess = false;
             List<ContentEntity> listContentEntity = new List<ContentEntity>();
-            string strSql = "INSERT INTO tb_ListContent (fld_Content) VALUES(@fld_Content)";
+            string strSql = "INSERT INTO tb_ListContent (fld_ID,fld_Content,fld_CreateDate) VALUES(@fld_ID,@fld_Content,@fld_CreateDate)";
             using (SqlConnection conn = new SqlConnection())
             {
                 conn.ConnectionString = GetConnectString();
@@ -99,17 +99,20 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                 try
                 {
                     SqlCommand cmd = new SqlCommand(strSql);
+
+                    cmd.Parameters.Add(new SqlParameter("@fld_ID", GetHashCode()));
                     cmd.Parameters.Add(new SqlParameter("@fld_Content", content));
+                    cmd.Parameters.Add(new SqlParameter("@fld_CreateDate", DateTime.Now));
                     cmd.Connection = conn;
-                     
-                    if (cmd.ExecuteNonQuery()>0)
+
+                    if (cmd.ExecuteNonQuery() > 0)
                     {
                         isSuccess = true;
                     }
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    // handle Exception
+                    throw e;
                 }
             }
             return isSuccess;
@@ -134,8 +137,8 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                     cmd.Connection = conn;
                     SqlParameter parameter = new SqlParameter();
                     cmd.Parameters.Add(new SqlParameter("@fld_ID", Convert.ToInt32(fld_ID)));
-                    
-                    if (cmd.ExecuteNonQuery()>0)
+
+                    if (cmd.ExecuteNonQuery() > 0)
                     {
                         isSuccess = true;
                     }
@@ -150,7 +153,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
 
         private string GetConnectString()
         {
-            return WebConfigurationManager.ConnectionStrings["connectString"].ConnectionString; 
+            return WebConfigurationManager.ConnectionStrings["localDB"].ToString();
         }
     }
 }
