@@ -12,14 +12,14 @@
         <p>What do you want to do?</p>
     </div>
     <form name="toDoList">
-        <input type="text" />
+        <input id="content" type="text" />
     </form>
     <button id="btn">Add</button>
     <ul>
         @{
             foreach (ContentEntity entity in Model.entityList)
             {
-                <li>@entity.fld_Content</li>
+                <li id="@entity.fld_ID">@entity.fld_Content</li>
             }
         }
     </ul>
