@@ -19,5 +19,51 @@ namespace ToDoList.Controllers
             model.entityList = contentList;
             return View(model);
         }
+
+        [HttpPost]
+        public ActionResult Insert(string content)
+        {
+            string response = string.Empty;
+            ToDoListBLL todoListBLL = new ToDoListBLL();
+            bool isSuccess = todoListBLL.AddContent(content);
+            if (isSuccess)
+            {
+                return Json(new { success = true, responseText = "InsertSuccess" }, JsonRequestBehavior.DenyGet); ;
+            }
+            else
+            {
+                return Json(new { success = false, responseText = "InsertFalse" }, JsonRequestBehavior.DenyGet); ;
+            }
+        }
+        [HttpPost]
+        public ActionResult Delete(string fld_id)
+        {
+            string response = string.Empty;
+            ToDoListBLL todoListBLL = new ToDoListBLL();
+            bool isSuccess = todoListBLL.RemoveContent(fld_id);
+            if (isSuccess)
+            {
+                return Json(new { success = true, responseText = "DeleteSuccess" }, JsonRequestBehavior.DenyGet); ;
+            }
+            else
+            {
+                return Json(new { success = false, responseText = "DeleteFalse" }, JsonRequestBehavior.DenyGet); ;
+            }
+        }
+        [HttpPost]
+        public ActionResult Update()
+        {
+            string response = string.Empty;
+            ToDoListBLL todoListBLL = new ToDoListBLL();
+            bool isSuccess = false;//todoListBLL.AddContent();
+            if (isSuccess)
+            {
+                return Json(new { success = true, responseText = "InsertSuccess" }, JsonRequestBehavior.DenyGet); ;
+            }
+            else
+            {
+                return Json(new { success = false, responseText = "InsertFalse" }, JsonRequestBehavior.DenyGet); ;
+            }
+        }
     }
 }
