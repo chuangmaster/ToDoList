@@ -6,19 +6,31 @@
 
 }
 
-
-<div id="myDIV" class="header">
-    <h2>To Do List</h2>
-    <input type="text" id="myInput" placeholder="Title...">
-    <span onclick="newElement()" class="addBtn">Add</span>
-</div>
-
-<ul id="myUL">
-    @{
-        foreach (ContentEntity entity in Model.entityList)
-        {
-            <li>@entity.fld_Content</li>
+<div class="container todoList">
+    <div class="containerHeadear">
+        <h1>My To Do List</h1>
+        <p>What do you want to do?</p>
+    </div>
+    <form name="toDoList">
+        <input type="text" />
+    </form>
+    <button id="btn">Add</button>
+    <ul>
+        @{
+            foreach (ContentEntity entity in Model.entityList)
+            {
+                <li>@entity.fld_Content</li>
+            }
         }
-    }
+    </ul>
+</div>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ToDoList")
+
+<script>
     
-</ul>
+    $(document).ready(function () {
+        ToDoList.init();
+
+    });
+</script>
