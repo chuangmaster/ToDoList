@@ -19,7 +19,7 @@
         @{
             foreach (ContentEntity entity in Model.entityList)
             {
-                <li id="@entity.fld_ID">@entity.fld_Content</li>
+                <li id="@entity.fld_ID" name="item">@entity.fld_Content</li>
             }
         }
     </ul>
