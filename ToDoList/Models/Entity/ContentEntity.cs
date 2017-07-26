@@ -11,6 +11,7 @@ namespace ToDoListLibrary.Entity.ToDoList
         public string fld_ID { get; set; }
         public string fld_Content { get; set; }
         public DateTime fld_CreateDate { get; set; }
+        public bool fld_status { get; set; }
     }
 }
 

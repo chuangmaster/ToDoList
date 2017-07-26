@@ -22,6 +22,15 @@ namespace ToDoListLibrary.Controllers.Service.ToDoList
             return isSuccess;
         }
 
+        public bool UpdateContentStatus(string fld_ID)
+        {
+            ToDoListDLL toDoListDLL = new ToDoListDLL();
+            ContentEntity entity = toDoListDLL.ReadEntity(fld_ID);
+            bool fld_status = entity.fld_status ? false : true;
+            bool isSuccess = toDoListDLL.UpdateContent(fld_ID, fld_status);
+            return isSuccess;
+        }
+
         public bool RemoveContent(string fld_ID)
         {
             ToDoListDLL toDoListDLL = new ToDoListDLL();
