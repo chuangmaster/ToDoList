@@ -44,6 +44,10 @@
         padding: 5px 15px;
     }
 
-    .todoList .toDoList {
+    .todoList .todoForm {
         display: inline-block;
+    }
+
+    .todoList .strike {
+        text-decoration: line-through;
     }

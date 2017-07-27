@@ -73,6 +73,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
                         ContentEntity entity = new ContentEntity();
                         entity.fld_ID = dr["fld_ID"].ToString();
                         entity.fld_Content = dr["fld_Content"].ToString();
+                        entity.fld_status = bool.Parse(dr["fld_status"].ToString());
                         entity.fld_CreateDate = DateTime.Parse(dr["fld_CreateDate"].ToString());
                         listContentEntity.Add(entity);
                     }
@@ -154,7 +155,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
             return isSuccess;
         }
 
-        public bool UpdateContent(string fld_ID,bool fld_status)
+        public bool UpdateContent(string fld_ID, bool fld_status)
         {
             bool isSuccess = false;
             List<ContentEntity> listContentEntity = new List<ContentEntity>();
