@@ -11,7 +11,7 @@
         <h1>My To Do List</h1>
         <p>What do you want to do?</p>
     </div>
-    <form name="toDoList">
+    <form name="todoForm">
         <input id="content" type="text" />
     </form>
     <button id="btn">Add</button>
@@ -19,7 +19,18 @@
         @{
             foreach (ContentEntity entity in Model.entityList)
             {
-                <li fld_id="@entity.fld_ID" class="item">@entity.fld_Content</li>
+                if (entity.fld_status)
+                {
+                    <li fld_id="@entity.fld_ID" class="item strike">
+                        <input type="checkbox" fld_id="@entity.fld_ID" class="ckb" checked /> @entity.fld_Content
+                    </li>
+                }
+                else
+                {
+                    <li fld_id="@entity.fld_ID" class="item">
+                        <input type="checkbox" fld_id="@entity.fld_ID" class="ckb"  /> @entity.fld_Content
+                    </li>
+                }
             }
         }
     </ul>
@@ -28,7 +39,7 @@
 @Scripts.Render("~/bundles/ToDoList")
 
 <script>
-    
+
     $(document).ready(function () {
         ToDoList.init();
 

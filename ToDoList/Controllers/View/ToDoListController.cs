@@ -51,18 +51,18 @@ namespace ToDoList.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Update()
+        public ActionResult Update(string fld_id, bool fld_status)
         {
             string response = string.Empty;
             ToDoListBLL todoListBLL = new ToDoListBLL();
-            bool isSuccess = false;//todoListBLL.AddContent();
+            bool isSuccess = todoListBLL.UpdateContentStatus(fld_id);
             if (isSuccess)
             {
-                return Json(new { success = true, responseText = "InsertSuccess" }, JsonRequestBehavior.DenyGet); ;
+                return Json(new { success = true, responseText = "UpdateSuccess" }, JsonRequestBehavior.DenyGet); ;
             }
             else
             {
-                return Json(new { success = false, responseText = "InsertFalse" }, JsonRequestBehavior.DenyGet); ;
+                return Json(new { success = false, responseText = "UpdateFalse" }, JsonRequestBehavior.DenyGet); ;
             }
         }
     }
