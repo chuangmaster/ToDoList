@@ -10,31 +10,31 @@ namespace ToDoListLibrary.Controllers.Service.ToDoList
     {
         public List<ContentEntity> GetListContentEntity()
         {
-            ToDoListDLL toDoListDLL = new ToDoListDLL();
-            List<ContentEntity> entity = toDoListDLL.ReadAllContentEntity();
+            ToDoListDAL toDoListDAL = new ToDoListDAL();
+            List<ContentEntity> entity = toDoListDAL.ReadAllContentEntity();
             return entity;
         }
 
         public bool AddContent(string fld_content)
         {
-            ToDoListDLL toDoListDLL = new ToDoListDLL();
-            bool isSuccess = toDoListDLL.InsertContent(fld_content);
+            ToDoListDAL toDoListDAL = new ToDoListDAL();
+            bool isSuccess = toDoListDAL.InsertContent(fld_content);
             return isSuccess;
         }
 
         public bool UpdateContentStatus(string fld_ID)
         {
-            ToDoListDLL toDoListDLL = new ToDoListDLL();
-            ContentEntity entity = toDoListDLL.ReadEntity(fld_ID);
+            ToDoListDAL toDoListDAL = new ToDoListDAL();
+            ContentEntity entity = toDoListDAL.ReadEntity(fld_ID);
             bool fld_status = entity.fld_status ? false : true;
-            bool isSuccess = toDoListDLL.UpdateContent(fld_ID, fld_status);
+            bool isSuccess = toDoListDAL.UpdateContent(fld_ID, fld_status);
             return isSuccess;
         }
 
         public bool RemoveContent(string fld_ID)
         {
-            ToDoListDLL toDoListDLL = new ToDoListDLL();
-            bool isSuccess = toDoListDLL.DeleteContent(fld_ID);
+            ToDoListDAL toDoListDAL = new ToDoListDAL();
+            bool isSuccess = toDoListDAL.DeleteContent(fld_ID);
             return isSuccess;
         }
     }

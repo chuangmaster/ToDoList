@@ -13,37 +13,39 @@ using ToDoListLibrary.Entity.ToDoList;
 namespace ToDoListLibrary.Controllers.Reposertory.ToDoList.Tests
 {
     [TestClass()]
-    public class ToDoListDLLTests
+    public class ToDoListDALTests
     {
         [TestMethod()]
         public void InsertContentTest()
         {
-            ToDoListDLL todoDll = new ToDoListDLL();
-            todoDll.InsertContent("代辦1");
+            ToDoListDAL todoDll = new ToDoListDAL();
+            bool result = todoDll.InsertContent("代辦1");
+            Assert.AreEqual(result, true);
 
         }
 
         [TestMethod()]
         public void ReadAllContentEntityTest()
         {
-            ToDoListDLL todoDll = new ToDoListDLL();
+            ToDoListDAL todoDll = new ToDoListDAL();
             List<ContentEntity> list = todoDll.ReadAllContentEntity();
-
+            
         }
 
         [TestMethod()]
         public void ReadEntityTest()
         {
-            ToDoListDLL todoDll = new ToDoListDLL();
+            ToDoListDAL todoDll = new ToDoListDAL();
             ContentEntity entity = todoDll.ReadEntity("20166498");
-           
+
         }
 
         [TestMethod()]
         public void DeleteContentTest()
         {
-            ToDoListDLL todoDll = new ToDoListDLL();
-            todoDll.DeleteContent("40574714");
+            ToDoListDAL todoDll = new ToDoListDAL();
+            bool result = todoDll.DeleteContent("40574714");
+            Assert.AreEqual(result, true);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ToDoListLibrary.Controllers.Reposertory.ToDoList
     /// <summary>
     /// To Do Read, Update, Delete
     /// </summary>
-    public class ToDoListDLL
+    public class ToDoListDAL
     {
         /// <summary>
         /// Read one content entity
